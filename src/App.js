@@ -1,55 +1,27 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { TransactionProvider } from './context/TransactionContext';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import AddTransactionPage from './pages/AddTransactionPage';
+import TransactionsPage from './pages/TransactionsPage';
+import ReportsPage from './pages/ReportsPage';
+import SettingsPage from './pages/SettingsPage';
 
 function App() {
-  const [expenses, setExpenses] = useState([]);
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState('');
-
-  const handleAddExpense = () => {
-    if (description.trim() && amount.trim() && !isNaN(amount)) {
-      setExpenses([...expenses, { description, amount: parseFloat(amount) }]);
-      setDescription('');
-      setAmount('');
-    }
-  };
-
-  const totalAmount = expenses.reduce((acc, expense) => acc + expense.amount, 0);
-
   return (
-    <div className="app-container">
-      <div className="expense-tracker">
-        <h1>Expense Tracker</h1>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="number"
-            className="form-control"
-            placeholder="Amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-        </div>
-        <button className="btn btn-primary" onClick={handleAddExpense}>Add Expense</button>
-        <h2>Total: ${totalAmount.toFixed(2)}</h2>
-        <ul className="list-group">
-          {expenses.map((expense, index) => (
-            <li key={index} className="list-group-item">
-              {expense.description}: ${expense.amount.toFixed(2)}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <TransactionProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add" element={<AddTransactionPage />} />
+          <Route path="/transactions" element={<TransactionsPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/settings" element={<SettingsPage />} />
+        </Routes>
+      </Router>
+    </TransactionProvider>
   );
 }
 

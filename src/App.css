@@ -4,17 +4,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+.container {
+  margin-top: 20px;
 }
 
 .card {
-  width: 100%;
-  max-width: 600px;
-  padding: 1rem;
+  margin-top: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -24,28 +19,15 @@ body {
   margin-bottom: 1rem;
 }
 
-.input-group {
-  margin-bottom: 1rem;
-}
-
-.input-group input {
-  flex-grow: 1;
-  margin-right: 0.5rem;
+.form-control {
   border-radius: 20px;
   padding: 0.5rem 1rem;
   border: 1px solid #ddd;
 }
 
-.input-group button {
+.btn-block {
+  width: 100%;
   border-radius: 20px;
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-}
-
-.input-group button:hover {
-  background-color: #0056b3;
 }
 
 .list-group-item {
@@ -55,10 +37,4 @@ body {
 
 .list-group-item:last-child {
   border-bottom: none;
-}
-
-h4.text-right {
-  margin-top: 1rem;
-  font-size: 1.25rem;
-  color: #333;
 }

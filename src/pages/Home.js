@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTransactions } from '../hooks/useTransactions';
+import useTransactions from '../hooks/useTransactions';
 
 const Home = () => {
   const { summary } = useTransactions();
